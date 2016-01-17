@@ -33,5 +33,6 @@
     "babel-plugin"
   ],
   "dependencies": {
+    "babylon": "6.4.x"
   }
 }
