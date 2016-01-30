@@ -6,6 +6,7 @@ const UNARY_OPERATOR_FUNCS = {
     '+': 'unary+',
     '-': 'unary-',
     '~': '~',
+    '!': '!',
 }
 
 export default function(babel) {
@@ -66,7 +67,9 @@ export default function(babel) {
                     ]))
                 }
             } else {
-                path.replaceWith(callNumb(operator, [left, right]))
+                path.replaceWith(types.assignmentExpression(
+                    '=', left, callNumb(operator, [left, right])
+                ))
             }
         }
     }
